@@ -1,45 +1,55 @@
-// TODO: Include packages needed for this application
-const inquirer = require('inquirer');
-const fs = require('fs');
-const { inherits } = require('util');
+function init () {
 
-
-// TODO: Create an array of questions for user input
-
-const questions = ([
-    {
-     type: 'input',
-     message: 'What is the name of your README file?',
-     name: 'title',   
-    },
-
-    {
-    type: 'input',
-    message: 'Provide a detailed description of your product',
-    name: 'text',
-    },
-
-
-])
-
-inquirer.prompt(questions).then((answers) => {
-  console.log(JSON.stringify(answers, null, ''))
-
-  function init(){}
-
+  const inquirer = require('inquirer');
+  const fs = require('fs'); 
+  const generate = require('/Users/alexc/Documents/README_Generator/generateMarkdown.js');
+  
+  inquirer
+    .prompt([
+      {
+          type: "input",
+          message: "What is your GitHub username?",
+          name: "github"
+      },
+      {
+        type: "input",
+        message: "Include an interesting and descriptive title to your README",
+        name: "title",  
+           },
+      { 
+        type: "input",
+        message: "Add a detailed description of your project",
+        name: "description",  
+           },
+      {
+         type: "input",
+         message: "Entail detail about the usage of your project",
+         name: "usage",
+      },
+      {
+        type: "input",
+        message: "Include information about how developers can contribute to your project",
+        name: "contributing",
+     },
+      {
+          type: "input",
+          message: "Describe the testing of your project",
+          name: "tests",
+      },
+      {
+          type: "checkbox",
+          message: "Choose a liscense from the options provided",
+          choices: ["MIT", "GNU General Public License 2.0", "Apache License 2.0", "GNU General Public License 3.0"],
+          name: "license",
+      },
+      
+      {
+          type: "input",
+          message: "Include your e-mail address so those with questions can contact you",
+          name: "email"
+      },
+    ])
+    .then((response) => {
+     
+  
   init();
-});
-
-
-
- 
-
-
-// TODO: Create a function to write README file
-//function writeToFile(fileName, data) {
-
-
-
-// TODO: Create a function to initialize app
-
-    
